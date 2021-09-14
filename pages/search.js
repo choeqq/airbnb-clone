@@ -1,27 +1,31 @@
-import Head from "next/head";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SearchResults from "../components/SearchResults";
 import Map from "../components/Map";
-import { useRouter } from "next/router";
 import { format } from "date-fns";
-import { useState } from "react";
 import getCenter from "geolib/es/getCenter";
 
 export default function Search({ searchResults }) {
   const router = useRouter();
+
+  console.log(router.query.checkIn, router.query.checkOut);
+
   const placeholder = `${router.query.location} | ${format(
     new Date(router.query.checkIn),
     "d MMM, yy"
   )} | ${format(new Date(router.query.checkIn), "d MMM, yy")} | ${
     router.query.guests
   } guests`;
+
   const [selectedLocation, setSelectedLocation] = useState({});
 
   const coordinates = [...searchResults].slice(1).map((result) => ({
     longitude: result.long,
     latitude: result.lat,
   }));
+
   const center = getCenter(coordinates);
 
   const [viewport, setViewport] = useState({
@@ -29,6 +33,7 @@ export default function Search({ searchResults }) {
     longitude: center.longitude,
     zoom: 11,
   });
+
   return (
     <>
       <Header placeholder={placeholder} />

@@ -11,7 +11,8 @@ export default function SearchResults({
   setViewport,
   setSelectedLocation,
 }) {
-  const router = useRouter;
+  const router = useRouter();
+
   const checkInDate = format(new Date(router.query.checkIn), "do MMM, yyyy");
   const checkOutDate = format(new Date(router.query.checkOut), "do MMM, yyyy");
 

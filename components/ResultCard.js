@@ -28,7 +28,7 @@ export default function ResultCard({
 
   useEffect(() => {
     const imagesCurrRef = imagesRef.current;
-    imagesRefCurr.addEventListener("scroll", handleScroll);
+    imagesCurrRef.addEventListener("scroll", handleScroll);
     return () => imagesRefCurr.removeEventListener("scroll", handleScroll);
   }, []);
 

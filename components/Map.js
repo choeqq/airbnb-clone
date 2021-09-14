@@ -28,7 +28,7 @@ export default function Map({
   }, []);
 
   return (
-    <MapContainer>
+    <MapContainer ref={containerRef}>
       <ReactMapGL
         mapStyle={"mapbox://styles/choeqq/cktk7qz3j5smn17morrvivnr9"}
         mapboxApiAccessToken="pk.eyJ1IjoiY2hvZXFxIiwiYSI6ImNrdGs3bmpkMzFqNzUycmp5OXJqZ2cwNnQifQ.-AHPde6X4rm9skAGP1bPHA"
